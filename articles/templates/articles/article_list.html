@@ -1,0 +1,19 @@
+{% extends "articles/base.html" %}
+
+{% block title %}Articles — Interactive Teaching Platform{% endblock %}
+
+{% block article_content %}
+{% for article in articles %}
+  <div style="margin-bottom:1.2rem; padding-bottom:1rem; border-bottom:1px solid #eee;">
+    <a href="{% url 'articles:detail' article.pk %}"
+       style="font-size:1rem; font-weight:700; color:#3b2fa0; text-decoration:none;">
+      {{ article.title }}
+    </a>
+    <p style="font-size:.85rem; color:#888; margin-top:.3rem;">
+      {{ article.created_at|date:"d M Y" }}
+    </p>
+  </div>
+{% empty %}
+  <p style="color:#888;">No articles yet. <a href="/admin" style="color:#3b2fa0;">Add one in admin →</a></p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "articles/base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block article_content %}
+  {{ rendered_body|safe }}
+{% endblock %}
+
+{% block sidebar_sections %}
+<div class="sidebar-title">Expandable<br>Content</div>
+{% for section in sections %}
+<div class="accordion-item">
+  <button class="accordion-btn" onclick="toggleAccordion(this)">
+    {{ section.title }} <span class="chevron">&#8964;</span>
+  </button>
+  <div class="accordion-body">{{ section.content|safe }}</div>
+</div>
+{% empty %}
+<div class="accordion-item">
+  <button class="accordion-btn" onclick="toggleAccordion(this)">
+    Introduction <span class="chevron">&#8964;</span>
+  </button>
+  <div class="accordion-body"></div>
+</div>
+{% endfor %}
+{% endblock %}
