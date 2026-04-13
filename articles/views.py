@@ -45,19 +45,19 @@ def media_popup(request, media_id):
         item = get_object_or_404(MediaItem, pk=media_id)
 
         file_url = ''
-if item.file:
-    try:
-        # Handle both CloudinaryField and regular FileField
-        if hasattr(item.file, 'url'):
-            file_url = item.file.url
-        elif hasattr(item.file, 'public_id'):
-            import cloudinary
-            file_url = cloudinary.CloudinaryImage(item.file.public_id).url
-        # Force https
-        if file_url and file_url.startswith('http://'):
-            file_url = file_url.replace('http://', 'https://', 1)
-    except Exception as e:
-        file_url = ''
+        if item.file:
+            try:
+                # Handle both CloudinaryField and regular FileField
+                if hasattr(item.file, 'url'):
+                    file_url = item.file.url
+                elif hasattr(item.file, 'public_id'):
+                    import cloudinary
+                    file_url = cloudinary.CloudinaryImage(item.file.public_id).url
+                # Force https
+                if file_url and file_url.startswith('http://'):
+                    file_url = file_url.replace('http://', 'https://', 1)
+            except Exception as e:
+                file_url = ''
 
         youtube_id = ''
         if item.youtube_url:
