@@ -12,7 +12,7 @@ class MediaItem(models.Model):
     title = models.CharField(max_length=200)
     media_type = models.CharField(max_length=10, choices=MEDIA_TYPES)
     text_content = models.TextField(blank=True)
-    file = models.FileField(upload_to='uploads/', blank=True, null=True)
+    file = models.FileField(blank=True, null=True)
     youtube_url = models.URLField(blank=True)
 
     def __str__(self):
