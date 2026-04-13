@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 class MediaItem(models.Model):
@@ -12,7 +13,7 @@ class MediaItem(models.Model):
     title = models.CharField(max_length=200)
     media_type = models.CharField(max_length=10, choices=MEDIA_TYPES)
     text_content = models.TextField(blank=True)
-    file = models.FileField(blank=True, null=True)
+    file = CloudinaryField('file', blank=True, null=True, resource_type='auto')
     youtube_url = models.URLField(blank=True)
 
     def __str__(self):
