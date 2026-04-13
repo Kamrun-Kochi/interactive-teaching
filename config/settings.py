@@ -78,3 +78,5 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-894168.up.railway.app']
